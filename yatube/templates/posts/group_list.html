@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+<head>
+    <title>{{ title }}</title>
+</head>
+{% block content %}
+  <div class="container py-5">
+    <h1 style="text-align:center">{{ title }}</h1>
+    <article>
+    {% for group in groups %}
+      <p>
+          <a href="{% url 'posts:group' group.title %}">{{ group.title }}</a>
+      </p>
+      {{ group.group_text }}
+      {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %}
+    </article>
+    <hr>
+    <!-- под последним постом нет линии -->
+  </div>
+{% endblock %}
